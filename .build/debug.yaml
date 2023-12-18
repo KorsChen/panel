@@ -1,0 +1,80 @@
+client:
+  name: basic
+tools: {}
+targets:
+  "PackageStructure": ["<PackageStructure>"]
+  "main": ["<panel-debug.module>"]
+  "panel-debug.module": ["<panel-debug.module>"]
+  "panelPackageTests-debug.test": ["<panelPackageTests-debug.test>"]
+  "panelTests-debug.module": ["<panelTests-debug.module>"]
+  "test": ["<panel-debug.module>","<panelPackageTests-debug.test>","<panelTests-debug.module>"]
+default: "main"
+nodes:
+  "/Users/k0rs/Develop/panel/Sources/panel/":
+    is-directory-structure: true
+    content-exclusion-patterns: [".git",".build"]
+  "/Users/k0rs/Develop/panel/Tests/panelTests/":
+    is-directory-structure: true
+    content-exclusion-patterns: [".git",".build"]
+commands:
+  "<panel-debug.module>":
+    tool: phony
+    inputs: ["/Users/k0rs/Develop/panel/.build/arm64-apple-macosx/debug/panel.build/panel.swift.o","/Users/k0rs/Develop/panel/.build/arm64-apple-macosx/debug/panel.swiftmodule"]
+    outputs: ["<panel-debug.module>"]
+
+  "<panelPackageTests-debug.test>":
+    tool: phony
+    inputs: ["/Users/k0rs/Develop/panel/.build/arm64-apple-macosx/debug/panelPackageTests.xctest/Contents/MacOS/panelPackageTests"]
+    outputs: ["<panelPackageTests-debug.test>"]
+
+  "<panelTests-debug.module>":
+    tool: phony
+    inputs: ["/Users/k0rs/Develop/panel/.build/arm64-apple-macosx/debug/panelTests.build/panelTests.swift.o","/Users/k0rs/Develop/panel/.build/arm64-apple-macosx/debug/panelTests.swiftmodule"]
+    outputs: ["<panelTests-debug.module>"]
+
+  "C.panel-debug.module":
+    tool: swift-compiler
+    inputs: ["/Users/k0rs/Develop/panel/Sources/panel/panel.swift"]
+    outputs: ["/Users/k0rs/Develop/panel/.build/arm64-apple-macosx/debug/panel.build/panel.swift.o","/Users/k0rs/Develop/panel/.build/arm64-apple-macosx/debug/panel.swiftmodule"]
+    executable: "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc"
+    module-name: "panel"
+    module-output-path: "/Users/k0rs/Develop/panel/.build/arm64-apple-macosx/debug/panel.swiftmodule"
+    import-paths: ["/Users/k0rs/Develop/panel/.build/arm64-apple-macosx/debug"]
+    temps-path: "/Users/k0rs/Develop/panel/.build/arm64-apple-macosx/debug/panel.build"
+    objects: ["/Users/k0rs/Develop/panel/.build/arm64-apple-macosx/debug/panel.build/panel.swift.o"]
+    other-args: ["-target","arm64-apple-macosx10.13","-swift-version","5","-enable-batch-mode","-index-store-path","/Users/k0rs/Develop/panel/.build/arm64-apple-macosx/debug/index/store","-Onone","-enable-testing","-g","-j14","-DSWIFT_PACKAGE","-DDEBUG","-module-cache-path","/Users/k0rs/Develop/panel/.build/arm64-apple-macosx/debug/ModuleCache","-parseable-output","-parse-as-library","-emit-objc-header","-emit-objc-header-path","/Users/k0rs/Develop/panel/.build/arm64-apple-macosx/debug/panel.build/panel-Swift.h","-color-diagnostics","-sdk","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.2.sdk","-F","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks","-I","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib","-L","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib","-Xcc","-isysroot","-Xcc","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.2.sdk","-Xcc","-F","-Xcc","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks","-Xcc","-fPIC","-package-name","panel"]
+    sources: ["/Users/k0rs/Develop/panel/Sources/panel/panel.swift"]
+    is-library: true
+    enable-whole-module-optimization: false
+    num-threads: 14
+
+  "C.panelPackageTests-debug.test":
+    tool: shell
+    inputs: ["/Users/k0rs/Develop/panel/.build/arm64-apple-macosx/debug/panel.build/panel.swift.o","/Users/k0rs/Develop/panel/.build/arm64-apple-macosx/debug/panelTests.build/panelTests.swift.o"]
+    outputs: ["/Users/k0rs/Develop/panel/.build/arm64-apple-macosx/debug/panelPackageTests.xctest/Contents/MacOS/panelPackageTests"]
+    description: "Linking ./.build/arm64-apple-macosx/debug/panelPackageTests.xctest/Contents/MacOS/panelPackageTests"
+    args: ["/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc","-L","/Users/k0rs/Develop/panel/.build/arm64-apple-macosx/debug","-o","/Users/k0rs/Develop/panel/.build/arm64-apple-macosx/debug/panelPackageTests.xctest/Contents/MacOS/panelPackageTests","-module-name","panelPackageTests","-Xlinker","-bundle","-Xlinker","-rpath","-Xlinker","@loader_path/../../../","@/Users/k0rs/Develop/panel/.build/arm64-apple-macosx/debug/panelPackageTests.product/Objects.LinkFileList","-target","arm64-apple-macosx13.0","-Xlinker","-add_ast_path","-Xlinker","/Users/k0rs/Develop/panel/.build/arm64-apple-macosx/debug/panel.swiftmodule","-Xlinker","-add_ast_path","-Xlinker","/Users/k0rs/Develop/panel/.build/arm64-apple-macosx/debug/panelTests.swiftmodule","-sdk","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.2.sdk","-F","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks","-I","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib","-L","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib"]
+
+  "C.panelTests-debug.module":
+    tool: swift-compiler
+    inputs: ["/Users/k0rs/Develop/panel/Tests/panelTests/panelTests.swift","/Users/k0rs/Develop/panel/.build/arm64-apple-macosx/debug/panel.swiftmodule"]
+    outputs: ["/Users/k0rs/Develop/panel/.build/arm64-apple-macosx/debug/panelTests.build/panelTests.swift.o","/Users/k0rs/Develop/panel/.build/arm64-apple-macosx/debug/panelTests.swiftmodule"]
+    executable: "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc"
+    module-name: "panelTests"
+    module-output-path: "/Users/k0rs/Develop/panel/.build/arm64-apple-macosx/debug/panelTests.swiftmodule"
+    import-paths: ["/Users/k0rs/Develop/panel/.build/arm64-apple-macosx/debug"]
+    temps-path: "/Users/k0rs/Develop/panel/.build/arm64-apple-macosx/debug/panelTests.build"
+    objects: ["/Users/k0rs/Develop/panel/.build/arm64-apple-macosx/debug/panelTests.build/panelTests.swift.o"]
+    other-args: ["-target","arm64-apple-macosx13.0","-swift-version","5","-enable-batch-mode","-index-store-path","/Users/k0rs/Develop/panel/.build/arm64-apple-macosx/debug/index/store","-Onone","-enable-testing","-g","-j14","-DSWIFT_PACKAGE","-DDEBUG","-module-cache-path","/Users/k0rs/Develop/panel/.build/arm64-apple-macosx/debug/ModuleCache","-parseable-output","-parse-as-library","-color-diagnostics","-sdk","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.2.sdk","-F","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks","-I","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib","-L","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib","-Xcc","-isysroot","-Xcc","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.2.sdk","-Xcc","-F","-Xcc","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks","-Xcc","-fPIC","-package-name","panel"]
+    sources: ["/Users/k0rs/Develop/panel/Tests/panelTests/panelTests.swift"]
+    is-library: true
+    enable-whole-module-optimization: false
+    num-threads: 14
+
+  "PackageStructure":
+    tool: package-structure-tool
+    inputs: ["/Users/k0rs/Develop/panel/Sources/panel/","/Users/k0rs/Develop/panel/Tests/panelTests/","/Users/k0rs/Develop/panel/Package.swift","/Users/k0rs/Develop/panel/Package.resolved"]
+    outputs: ["<PackageStructure>"]
+    description: "Planning build"
+    allow-missing-inputs: true
+

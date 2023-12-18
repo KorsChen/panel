@@ -1,0 +1,11 @@
+{
+  "": {
+    "swift-dependencies": "/Users/k0rs/Develop/panel/.build/arm64-apple-macosx/debug/panel.build/master.swiftdeps"
+  },
+  "/Users/k0rs/Develop/panel/Sources/panel/panel.swift": {
+    "dependencies": "/Users/k0rs/Develop/panel/.build/arm64-apple-macosx/debug/panel.build/panel.d",
+    "object": "/Users/k0rs/Develop/panel/.build/arm64-apple-macosx/debug/panel.build/panel.swift.o",
+    "swiftmodule": "/Users/k0rs/Develop/panel/.build/arm64-apple-macosx/debug/panel.build/panel~partial.swiftmodule",
+    "swift-dependencies": "/Users/k0rs/Develop/panel/.build/arm64-apple-macosx/debug/panel.build/panel.swiftdeps"
+  }
+}

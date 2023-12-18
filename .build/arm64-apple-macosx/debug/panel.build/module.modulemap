@@ -1,0 +1,4 @@
+module panel {
+    header "/Users/k0rs/Develop/panel/.build/arm64-apple-macosx/debug/panel.build/panel-Swift.h"
+    requires objc
+}
